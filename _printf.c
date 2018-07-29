@@ -15,9 +15,6 @@ int _printf(const char *format, ...)
 
 	va_start(val, format);
 
-	if (format == NULL)
-		return (0);
-
 	for (i = 0; format[i]; i++)
 	{
 		if (format[i] == '%')

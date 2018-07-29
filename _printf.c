@@ -32,11 +32,13 @@ int _printf(const char *format, ...)
 					_puts(string);
 					count += _strlen(string);
 					break;
-				default:
+				case '%':
 					i++;
 					_putchar(format[i]);
 					count++;
 					break;
+				default:
+					return (-1);
 			}
 		}
 		else

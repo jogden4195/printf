@@ -1,6 +1,5 @@
 #include "holberton.h"
 #include <stdarg.h>
-#include <stdio.h>
 
 /**
   * _printf - similar to printf from stdio.h
@@ -41,7 +40,10 @@ int _printf(const char *format, ...)
 			}
 		}
 		else
+		{
 			_putchar(format[i]);
+			count++;
+		}
 	}
 	return (count);
 }

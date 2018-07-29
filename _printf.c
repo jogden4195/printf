@@ -1,10 +1,17 @@
 #include "holberton.h"
 #include <stdarg.h>
+#include <stdio.h>
+
+/**
+  * _printf - similar to printf from stdio.h
+  * @format: character string
+  * Return: number of string printed
+  */
 
 int _printf(const char *format, ...)
 {
 	char *string;
-	int i, count;
+	int i, count = 0;
 	va_list val;
 
 	va_start(val, format);
@@ -13,25 +20,28 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			switch(format[i + 1])
+			switch (format[i + 1])
 			{
 				case 'c':
-			  		i++;
+					i++;
 					_putchar(va_arg(val, int));
 					count++;
+					break;
 				case 's':
 					i++;
 					string = va_arg(val, char*);
 					_puts(string);
-					count += str_len(string);
+					count += _strlen(string);
+					break;
 				default:
 					i++;
-					putchar(format[i]);
+					_putchar(format[i]);
 					count++;
+					break;
 			}
 		}
 		else
-			putchar(format[i]);
+			_putchar(format[i]);
 	}
 	return (count);
 }

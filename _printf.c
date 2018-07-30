@@ -53,7 +53,7 @@ int _printf(const char *format, ...)
 					i++;
 					string = va_arg(val, char*);
 					if (string == NULL)
-						string = "(nil)";
+						return (-1);
 					len = _strlen(string);
 					if (string[len] != 0)
 						return (-1);

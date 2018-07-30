@@ -19,27 +19,7 @@ int _printf(const char *format, ...)
 		return (-1);
 
 	va_start(val, format);
-	/*
-	 *while (format && format[j])
-	 *{
-	 *	if (format[j] == '%')
-	 *	{
-	 *		switch (format[j + 1])
-	 *		{
-	 *			case '%':
-	 *			case 'c':
-	 *			case 's':
-	 *			case 'i':
-	 *			case 'd':
-	 *				i++;
-	 *				break;
-	 *			default:
-	 *				return (-1);
-	 *		}
-	 *	}
-	 *	j++;
-	 }
-	 */
+
 	for (i = 0; format[i]; i++)
 	{
 		if (format[i] == '%')

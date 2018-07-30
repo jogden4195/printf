@@ -14,10 +14,10 @@ int _printf(const char *format, ...)
 	int i, len, count = 0;
 	va_list val;
 
-	
+
 	if (format == NULL)
 		return (-1);
-	
+
 	va_start(val, format);
 	/*
 	 *while (format && format[j])
@@ -38,7 +38,8 @@ int _printf(const char *format, ...)
 	 *		}
 	 *	}
 	 *	j++;
-	 }*/
+	 }
+	 */
 	for (i = 0; format[i]; i++)
 	{
 		if (format[i] == '%')

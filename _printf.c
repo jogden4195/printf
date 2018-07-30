@@ -11,33 +11,33 @@
 int _printf(const char *format, ...)
 {
 	char *string;
-	int i, len, count = 0, temp_c;
+	int i, j = 0, len, count = 0;
 	va_list val;
 
-	if (format == NULL)
-		return (-1);
-	va_start(val, format);
 	/*
-	 *while (format[j])
-	 *{
-	 *	if (format[j] == '%')
-	 *	{
-	 *		switch (format[j + 1])
-	 *		{
-	 *			case '%':
-	 *			case 'c':
-	 *			case 's':
-	 *			case 'i':
-	 *			case 'd':
-	 *				i++;
-	 *				break;
-	 *			default:
-	 *				return (-1);
-	 *		}
-	 *	}
-	 *	j++;
-	 *}
-	*/
+	 *if (format == NULL)
+	 *	return (-1);
+	 */
+	va_start(val, format);
+	while (format && format[j])
+	{
+		if (format[j] == '%')
+		{
+			switch (format[j + 1])
+			{
+				case '%':
+				case 'c':
+				case 's':
+				case 'i':
+				case 'd':
+					i++;
+					break;
+				default:
+					return (-1);
+			}
+		}
+		j++;
+	}
 	for (i = 0; format[i]; i++)
 	{
 		if (format[i] == '%')
@@ -46,18 +46,12 @@ int _printf(const char *format, ...)
 			{
 				case 'c':
 					i++;
-					temp_c = va_arg(val, int);
-					if (temp_c)
-						_putchar(temp_c);
-					else
-						return (-1);
+					_putchar(va_arg(val, int));
 					count++;
 					break;
 				case 's':
 					i++;
 					string = va_arg(val, char*);
-					if (!string)
-						return (-1);
 					if (string == NULL)
 						return (-1);
 					len = _strlen(string);

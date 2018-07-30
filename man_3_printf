@@ -1,0 +1,29 @@
+.TH _PRINTF 1 "30 July 2018" "GNU coreutils 8.21" "Printf Man Page"
+.SH NAME
+.B _printf
+- format and print data
+.SH SYNOPSIS
+.B printf
+.I FORMAT [ARGUMENT]
+.SH DESCRIPTION
+Print ARGUMENT(s) according to FORMAT
+
+FORMAT controls the output as in C printf. Interpreted sequences are:
+
+\\"       double quote
+
+\\\\	 backslash
+
+\\n	 newline
+
+%%	 a single %
+
+%c	 prints a single character
+
+%s	 prints a string
+
+%i, %d	 prints an integer
+.SH BUGS
+No known bugs.
+.SH AUTHOR
+Written by Alexa Soucy and Jennifer Ogden

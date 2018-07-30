@@ -4,6 +4,8 @@
 /**
  * print_number - prints a number
  * @n: variable containing an integer value
+ *
+ * Return: count (int)
  */
 
 int print_number(int n)

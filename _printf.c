@@ -1,5 +1,7 @@
 #include "holberton.h"
 #include <stdarg.h>
+#include <stdlib.h>
+#include <stdio.h>
 
 /**
   * _printf - similar to printf from stdio.h
@@ -10,11 +12,22 @@
 int _printf(const char *format, ...)
 {
 	char *string;
-	int i, count = 0;
+	int i, j = 0, count = 0;
 	va_list val;
 
 	va_start(val, format);
 
+	while (format[j] != '\0')
+	{
+		if (format[j] == '%')
+		{
+			if (format[j + 1] != '%')
+				j++;
+			else if (format[j + 1] != 'c' || format[j + 1] != 's' || format[j + 1] != 'd' || format[j + 1] != 'i')
+				return (-1);
+		}
+		j++;
+	}
 	for (i = 0; format[i]; i++)
 	{
 		if (format[i] == '%')
@@ -32,11 +45,23 @@ int _printf(const char *format, ...)
 					_puts(string);
 					count += _strlen(string);
 					break;
-				default:
+				case '%':
 					i++;
 					_putchar(format[i]);
 					count++;
 					break;
+				case 'i':
+				case 'd':
+					i++;
+					count += print_number(va_arg(val, int));
+					break;
+				case ' ':
+					printf("This is an error.\n");
+					return (-1);
+				case '\0':
+					return (-1);
+				default:
+					return (-1);
 			}
 		}
 		else
@@ -45,5 +70,6 @@ int _printf(const char *format, ...)
 			count++;
 		}
 	}
+	printf("count: %d\n", count);
 	return (count);
 }

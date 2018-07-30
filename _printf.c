@@ -15,7 +15,7 @@ int _printf(const char *format, ...)
 	va_list val;
 
 	if (format == NULL)
-		return (1);
+		return (-1);
 	va_start(val, format);
 	while (format[j])
 	{
@@ -31,7 +31,7 @@ int _printf(const char *format, ...)
 					i++;
 					break;
 				default:
-					return (1);
+					return (-1);
 			}
 		}
 		j++;
@@ -54,7 +54,7 @@ int _printf(const char *format, ...)
 						string = "(nil)";
 					len = _strlen(string);
 					if (string[len] != 0)
-						return (1);
+						return (-1);
 					_puts(string);
 					count += _strlen(string);
 					break;
@@ -69,11 +69,11 @@ int _printf(const char *format, ...)
 					count += print_number(va_arg(val, int));
 					break;
 				case ' ':
-					return (1);
+					return (-1);
 				case '\0':
-					return (1);
+					return (-1);
 				default:
-					return (1);
+					return (-1);
 			}
 		}
 		else

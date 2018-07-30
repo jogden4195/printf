@@ -11,6 +11,7 @@
 int _printf(const char *format, ...)
 {
 	char *var;
+	int bob;
 	int i, len, count = 0;
 	va_list val;
 
@@ -28,22 +29,22 @@ int _printf(const char *format, ...)
 			{
 				case 'c':
 					i++;
-					var = va_arg(val, int);
-					if (var == NULL)
+					bob = va_arg(val, int);
+					if (!bob)
 						return (-1);
-					_putchar(var);
+					_putchar(bob);
 					count++;
 					break;
 				case 's':
 					i++;
 					var = va_arg(val, char*);
-					if (string == NULL)
+					if (var == NULL)
 						return (-1);
-					len = _strlen(string);
-					if (string[len] != 0)
+					len = _strlen(var);
+					if (var[len] != 0)
 						return (-1);
-					_puts(string);
-					count += _strlen(string);
+					_puts(var);
+					count += _strlen(var);
 					break;
 				case '%':
 					i++;

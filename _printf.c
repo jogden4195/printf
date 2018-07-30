@@ -15,20 +15,21 @@ int _printf(const char *format, ...)
 	va_list val;
 
 	va_start(val, format);
-
-	while (format[j] != '\0')
-	{
-		if (format[j] == '%')
-		{
-			if (format[j + 1] != '%')
-				j++;
-			else if (format[j + 1] != 'c' || format[j + 1] != 's')
-				return (-1);
-			else if (format[j + 1] != 'd' || format[j + 1] != 'i')
-				return (-1);
-		}
-		j++;
-	}
+	/*
+	 *while (format[j] != '\0')
+	 *{
+	 *	if (format[j] == '%')
+	 *	{
+	 *		if (format[j + 1] != '%')
+	 *			j++;
+	 *		else if (format[j + 1] != 'c' || format[j + 1] != 's')
+	 *			return (-1);
+	 *		else if (format[j + 1] != 'd' || format[j + 1] != 'i')
+	 *			return (-1);
+	 *	}
+	 *	j++;
+	 *}
+	*/
 	for (i = 0; format[i]; i++)
 	{
 		if (format[i] == '%')

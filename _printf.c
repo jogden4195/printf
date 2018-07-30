@@ -11,7 +11,7 @@
 int _printf(const char *format, ...)
 {
 	char *string;
-	int i, len, count = 0;
+	int i, len, count = 0, temp_c;
 	va_list val;
 
 	if (format == NULL)
@@ -46,12 +46,18 @@ int _printf(const char *format, ...)
 			{
 				case 'c':
 					i++;
-					_putchar(va_arg(val, int));
+					temp_c = va_arg(val, int);
+					if (temp_c)
+						_putchar(temp_c);
+					else
+						return (-1);
 					count++;
 					break;
 				case 's':
 					i++;
 					string = va_arg(val, char*);
+					if (!string)
+						return (-1);
 					if (string == NULL)
 						return (-1);
 					len = _strlen(string);

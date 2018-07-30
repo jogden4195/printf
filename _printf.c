@@ -11,7 +11,7 @@
 int _printf(const char *format, ...)
 {
 	char *string;
-	int i, j = 0, count = 0, len;
+	int i, len, j = 0, count = 0;
 	va_list val;
 
 	va_start(val, format);
@@ -73,6 +73,5 @@ int _printf(const char *format, ...)
 			count++;
 		}
 	}
-	_putchar('\0');
 	return (count);
 }

@@ -11,7 +11,7 @@
 int _printf(const char *format, ...)
 {
 	char *string;
-	int i, len, count = 0;
+	int i, count = 0;
 	va_list val;
 
 	
@@ -19,26 +19,6 @@ int _printf(const char *format, ...)
 		return (-1);
 	
 	va_start(val, format);
-	/*
-	 *while (format && format[j])
-	 *{
-	 *	if (format[j] == '%')
-	 *	{
-	 *		switch (format[j + 1])
-	 *		{
-	 *			case '%':
-	 *			case 'c':
-	 *			case 's':
-	 *			case 'i':
-	 *			case 'd':
-	 *				i++;
-	 *				break;
-	 *			default:
-	 *				return (-1);
-	 *		}
-	 *	}
-	 *	j++;
-	 }*/
 	for (i = 0; format[i]; i++)
 	{
 		if (format[i] == '%')
@@ -53,11 +33,6 @@ int _printf(const char *format, ...)
 				case 's':
 					i++;
 					string = va_arg(val, char*);
-					if (string == NULL)
-						return (-1);
-					len = _strlen(string);
-					if (string[len] != 0)
-						return (-1);
 					_puts(string);
 					count += _strlen(string);
 					break;

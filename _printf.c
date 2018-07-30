@@ -10,7 +10,7 @@
 int _printf(const char *format, ...)
 {
 	char *string;
-	int i, count = 0;
+	int i, len, count = 0;
 	va_list val;
 
 	va_start(val, format);
@@ -29,6 +29,9 @@ int _printf(const char *format, ...)
 				case 's':
 					i++;
 					string = va_arg(val, char*);
+					len = _strlen(string);
+					if (string[len] != 0)
+						return (-1);
 					_puts(string);
 					count += _strlen(string);
 					break;
@@ -47,6 +50,5 @@ int _printf(const char *format, ...)
 			count++;
 		}
 	}
-	_putchar('\0');
 	return (count);
 }

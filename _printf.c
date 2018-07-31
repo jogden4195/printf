@@ -35,7 +35,12 @@ int _printf(const char *format, ...)
 					i++;
 					var = va_arg(val, char*);
 					if (var == NULL)
-						_puts("(null)");
+					{
+						var = "(null)";
+						_puts(var);
+						count += _strlen(var);
+						break;
+					}
 					len = _strlen(var);
 					if (var[len] != 0)
 						return (-1);

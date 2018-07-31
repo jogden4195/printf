@@ -2,6 +2,7 @@
 #include <stdarg.h>
 #include <stdlib.h>
 #include <stdio.h>
+
 /**
   * _printf - similar to printf from stdio.h
   * @format: character string
@@ -61,6 +62,9 @@ int _printf(const char *format, ...)
 					if (num < 0)
 						return (-1);
 					count += binary(num);
+					break;
+				case 'r':
+					count += print_rev(va_arg(val, char *));
 					break;
 				default:
 					_putchar('%');

@@ -22,16 +22,15 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			switch (format[i + 1])
+			i++;
+			switch (format[i])
 			{
 				case 'c':
-					i++;
 					bob = va_arg(val, int);
 					_putchar(bob);
 					count++;
 					break;
 				case 's':
-					i++;
 					var = va_arg(val, char*);
 					if (var == NULL)
 					{
@@ -47,21 +46,21 @@ int _printf(const char *format, ...)
 					count += _strlen(var);
 					break;
 				case '%':
-					i++;
 					_putchar(format[i]);
 					count++;
 					break;
 				case 'i':
 				case 'd':
-					i++;
 					count += print_number(va_arg(val, int));
 					break;
 				case ' ':
 					return (-1);
 				case '\0':
 					return (-1);
+				case 'b':
+					count += binary(va_arg(val, int));
+					break;
 				default:
-					i++;
 					_putchar('%');
 					_putchar(format[i]);
 					count += 2;

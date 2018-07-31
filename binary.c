@@ -10,17 +10,26 @@
 int binary(int n)
 {
 	char res[1000];
-	int i, count;
+	int i, count = 0;
 
-	for (i = 0; n > 0; i++)
+	if (n != 0)
 	{
-		res[i] = n % 2;
-		n /= 2;
+		for (i = 0; n > 0; i++)
+		{
+			res[i] = n % 2;
+			n /= 2;
+		}
+		for (i--; i >= 0; i--)
+		{
+			_putchar(res[i] + '0');
+			count++;
+		}
 	}
-	for (count = 0, i--; i >= 0; i--)
+	else
 	{
-		_putchar(res[i] + '0');
+		_putchar('0');
 		count++;
 	}
+
 	return (count);
 }

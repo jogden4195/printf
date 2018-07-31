@@ -16,7 +16,7 @@ int dectooct(unsigned int n)
 		num = num / 8;
 		i++;
 	}
-	for (j = i - 1; j >= 0; j--) 
+	for (j = i - 1; j >= 0; j--)
 	{
 		_putchar(printer[j] + '0');
 		count++;

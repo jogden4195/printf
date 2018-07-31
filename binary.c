@@ -38,6 +38,6 @@ int binary(unsigned int n)
 		_putchar('0');
 		count++;
 	}
-
+	free(arr);
 	return (count);
 }

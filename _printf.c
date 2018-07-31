@@ -78,6 +78,17 @@ int _printf(const char *format, ...)
 				case 'X':
 					count += dectohex(va_arg(val, unsigned int));
 					break;
+				case 'R':
+					var = va_arg(val, char *);
+					if (var == NULL)
+					{
+						var = "(null)";
+						_puts(var);
+						count += rot13(var);
+						break;
+					}
+					count += rot13(var);
+					break;
 				default:
 					_putchar('%');
 					_putchar(format[i]);

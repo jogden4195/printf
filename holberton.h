@@ -10,5 +10,6 @@ int print_number(int n);
 int binary(unsigned int n);
 int print_rev(char *s);
 int dectohex(unsigned int n);
+int rot13(char *s);
 
 #endif

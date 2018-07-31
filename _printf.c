@@ -74,6 +74,10 @@ int _printf(const char *format, ...)
 					}
 					count += print_rev(var);
 					break;
+				case 'x':
+				case 'X':
+					count += dectohex(va_arg(val, unsigned int));
+					break;
 				default:
 					_putchar('%');
 					_putchar(format[i]);

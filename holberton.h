@@ -9,5 +9,6 @@ int _putchar(char c);
 int print_number(int n);
 int binary(unsigned int n);
 int print_rev(char *s);
+int dectohex(unsigned int n);
 
 #endif

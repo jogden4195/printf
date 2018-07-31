@@ -1,7 +1,7 @@
 #include "holberton.h"
 #include <stdarg.h>
 #include <stdlib.h>
-
+#include <stdio.h>
 /**
   * _printf - similar to printf from stdio.h
   * @format: character string
@@ -10,26 +10,14 @@
 
 int _printf(const char *format, ...)
 {
-	char *string;
-	int i, len,  count = 0;
+	char *var;
+	int bob;
+	int i, len, count = 0;
 	va_list val;
 
+	if (format == NULL)
+		return (-1);
 	va_start(val, format);
-	/*
-	 *while (format[j] != '\0')
-	 *{
-	 *	if (format[j] == '%')
-	 *	{
-	 *		if (format[j + 1] != '%')
-	 *			j++;
-	 *		else if (format[j + 1] != 'c' || format[j + 1] != 's')
-	 *			return (-1);
-	 *		else if (format[j + 1] != 'd' || format[j + 1] != 'i')
-	 *			return (-1);
-	 *	}
-	 *	j++;
-	 *}
-	*/
 	for (i = 0; format[i]; i++)
 	{
 		if (format[i] == '%')
@@ -38,17 +26,25 @@ int _printf(const char *format, ...)
 			{
 				case 'c':
 					i++;
-					_putchar(va_arg(val, int));
+					bob = va_arg(val, int);
+					_putchar(bob);
 					count++;
 					break;
 				case 's':
 					i++;
-					string = va_arg(val, char*);
-					len = _strlen(string);
-					if (string[len] != 0)
+					var = va_arg(val, char*);
+					if (var == NULL)
+					{
+						var = "(null)";
+						_puts(var);
+						count += _strlen(var);
+						break;
+					}
+					len = _strlen(var);
+					if (var[len] != 0)
 						return (-1);
-					_puts(string);
-					count += _strlen(string);
+					_puts(var);
+					count += _strlen(var);
 					break;
 				case '%':
 					i++;
@@ -65,7 +61,11 @@ int _printf(const char *format, ...)
 				case '\0':
 					return (-1);
 				default:
-					return (-1);
+					i++;
+					_putchar('%');
+					_putchar(format[i]);
+					count += 2;
+					break;
 			}
 		}
 		else
@@ -74,5 +74,6 @@ int _printf(const char *format, ...)
 			count++;
 		}
 	}
+	va_end(val);
 	return (count);
 }

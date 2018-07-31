@@ -11,7 +11,7 @@
 int _printf(const char *format, ...)
 {
 	char *var;
-	int bob;
+	int num;
 	int i, len, count = 0;
 	va_list val;
 
@@ -26,8 +26,7 @@ int _printf(const char *format, ...)
 			switch (format[i])
 			{
 				case 'c':
-					bob = va_arg(val, int);
-					_putchar(bob);
+					_putchar(va_arg(val, int));
 					count++;
 					break;
 				case 's':
@@ -58,7 +57,10 @@ int _printf(const char *format, ...)
 				case '\0':
 					return (-1);
 				case 'b':
-					count += binary(va_arg(val, int));
+					num = va_arg(val, int);
+					if (num < 0)
+						return (-1);
+					count += binary(num);
 					break;
 				default:
 					_putchar('%');

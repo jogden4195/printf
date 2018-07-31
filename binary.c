@@ -7,7 +7,7 @@
   * Return: number of characters printed
   */
 
-int binary(int n)
+int binary(unsigned int n)
 {
 	char res[1000];
 	int i, count = 0;

@@ -12,7 +12,7 @@ int binary(unsigned int n)
 	char res[1000];
 	int i, count = 0;
 
-	if (n != 0)
+	if (n > 1)
 	{
 		for (i = 0; n > 0; i++)
 		{
@@ -24,6 +24,11 @@ int binary(unsigned int n)
 			_putchar(res[i] + '0');
 			count++;
 		}
+	}
+	else if (n == 1)
+	{
+		_putchar('1');
+		count++;
 	}
 	else
 	{

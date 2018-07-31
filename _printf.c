@@ -64,18 +64,15 @@ int _printf(const char *format, ...)
 					count += binary(num);
 					break;
 				case 'r':
+					var = va_arg(val, char *);
 					if (var == NULL)
 					{
 						var = "(null)";
 						_puts(var);
-						count += _strlen(var);
+						count += print_rev(var);
 						break;
 					}
-					len = _strlen(var);
-					if (var[len] != 0)
-						return (-1);
-					_puts(var);
-					count += print_rev(va_arg(val, char *));
+					count += print_rev(var);
 					break;
 				default:
 					_putchar('%');

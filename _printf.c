@@ -1,7 +1,7 @@
 #include "holberton.h"
 #include <stdarg.h>
 #include <stdlib.h>
-
+#include <stdio.h>
 /**
   * _printf - similar to printf from stdio.h
   * @format: character string
@@ -15,10 +15,8 @@ int _printf(const char *format, ...)
 	int i, len, count = 0;
 	va_list val;
 
-
 	if (format == NULL)
 		return (-1);
-
 	va_start(val, format);
 
 	for (i = 0; format[i]; i++)
@@ -30,8 +28,6 @@ int _printf(const char *format, ...)
 				case 'c':
 					i++;
 					bob = va_arg(val, int);
-					if (!bob)
-						return (-1);
 					_putchar(bob);
 					count++;
 					break;
@@ -39,7 +35,7 @@ int _printf(const char *format, ...)
 					i++;
 					var = va_arg(val, char*);
 					if (var == NULL)
-						return (-1);
+						_puts("(null)");
 					len = _strlen(var);
 					if (var[len] != 0)
 						return (-1);

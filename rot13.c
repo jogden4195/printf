@@ -8,7 +8,7 @@
 
 int rot13(char *s)
 {
-	int scan, i, count = 0;
+	int scan, i, count = 0, flag;
 	char norm[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 	char rot[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
 
@@ -19,7 +19,11 @@ int rot13(char *s)
 			{
 				_putchar(rot[i]);
 				count++;
+				flag = 0;
 			}
+		if (flag == 1)
+			_putchar(s[scan]);
+		flag = 1;
 	}
 	return (count);
 }

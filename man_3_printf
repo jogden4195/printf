@@ -23,7 +23,13 @@ FORMAT controls the output as in C printf. Interpreted sequences are:
 %s	 prints a string
 
 %i, %d	 prints an integer
+
+%r	 prints a string in reverse
+
+%R	 encodes a string in rot13
 .SH BUGS
 No known bugs.
 .SH AUTHOR
 Written by Alexa Soucy and Jennifer Ogden
+.SH SEE ALSO
+.B pritnf(3)

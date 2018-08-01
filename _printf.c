@@ -77,10 +77,6 @@ int _printf(const char *format, ...)
 					}
 					count += print_rev(var);
 					break;
-				case 'x':
-				case 'X':
-					count += dectohex(va_arg(val, unsigned int));
-					break;
 				case 'o':
 					count += dectooct(va_arg(val, unsigned int));
 					break;

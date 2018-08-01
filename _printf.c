@@ -53,9 +53,6 @@ int _printf(const char *format, ...)
 				case 'd':
 					count += print_number(va_arg(val, int));
 					break;
-				case 'u':
-					count += u_print_number(va_arg(val, unsigned int));
-					break;
 				case ' ':
 					return (-1);
 				case '\0':
@@ -76,9 +73,6 @@ int _printf(const char *format, ...)
 						break;
 					}
 					count += print_rev(var);
-					break;
-				case 'o':
-					count += dectooct(va_arg(val, unsigned int));
 					break;
 				case 'R':
 					var = va_arg(val, char *);
